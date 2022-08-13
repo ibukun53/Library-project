@@ -40,7 +40,7 @@ function displayLibrary() {
   }
   tbody.innerHTML = result;
 }
-
+// button to change read status
 Book.prototype.changeStatus = () => {
   if (this.title === 'Read') {
     return 'Read';
@@ -50,7 +50,31 @@ Book.prototype.changeStatus = () => {
   return 'Not Read';
 };
 
+// button to remove book from array
+function applyDataIndex() {
+  const rows = document.querySelector('tr');
+  for (let i = 0; i < rows.length; i += 1) {
+    rows[i].dataset.index = i;
+    console.log(rows[i].dataset);
+  }
+}
+
+function deleteButton(e) {
+  const row = e.target.parentNode.parentNode;
+  const index = e.target.parentNode.dataset.index;
+  row.remove();
+  library.splice(index, 1);
+}
+function deleteRow() {
+  const buttons = document.querySelectorAll('button');
+  for (let i = 1; i < buttons.length; i += 1) {
+    buttons[i].addEventListener('click', deleteButton);
+  }
+}
+
 submit.addEventListener('click', () => {
   displayLibrary();
   addBookToLibrary();
+  applyDataIndex();
+  deleteRow();
 });
