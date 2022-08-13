@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library-project</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div>
+      <form id="form">
+        <label for="bookInfo">Enter book info</label><br />
+        <input type="text" id="inputTitle" name="Title" placeholder="Title" /><br />
+        <input type="text" id="inputAuthor" name="Author" placeholder="Author" /><br />
+        <input type="text" id="inputPages" name="Page" placeholder="Pages" /><br />
+
+        <label for="book">--Select--</label><br />
+        <select id="bookStatus" form="form">
+          <option value="Read">Read</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Not Read">Not Read</option></select
+        ><br />
+        <button type="button" class="submit">Add new book</button>
+      </form>
+    </div>
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Page</th>
+            <th>Reading Status</th>
+          </tr>
+        </thead>
+        <tr id="myDIV" data-index="1">
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
