@@ -34,11 +34,21 @@ function displayLibrary() {
       <td> ${library[i].author}</td>
       <td> ${library[i].title}</td>
        <td> ${library[i].page}</td>
+       <td> ${library[i].changeStatus()}<br><span></span></td>
        <td><button class='button'>Delete</button></td>
        </tr>`;
   }
   tbody.innerHTML = result;
 }
+
+Book.prototype.changeStatus = () => {
+  if (this.title === 'Read') {
+    return 'Read';
+  } else if (this.title === 'In Progress') {
+    return 'In Progress';
+  }
+  return 'Not Read';
+};
 
 submit.addEventListener('click', () => {
   displayLibrary();
