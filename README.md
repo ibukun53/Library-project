@@ -1,9 +1,8 @@
 # Library.project
+
 >
 
 ![screenshot]()
-
-
 
 ## Built With
 
@@ -13,14 +12,14 @@
 
 ## Live Demo
 
-[Live Demo Link](https://rockpaperscissors-game-app.netlify.app/)
+[Live Demo Link](/)
 
 ### Development (Running locally)
 
 - Clone the project
 
 ```bash
-git clone https://github.com/ibukun53/Odin-project
+git clone https://github.com/ibukun53/Library-project.git
 
 ```
 
