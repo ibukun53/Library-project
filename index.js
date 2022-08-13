@@ -3,6 +3,7 @@ const bookAuthor = document.querySelector('#inputAuthor');
 const bookTitle = document.querySelector('#inputTitle');
 const bookPages = document.querySelector('#inputPages');
 const readOptions = document.querySelector('select');
+const submit = document.querySelector('.submit');
 
 const library = [];
 // constructor to create book object
@@ -22,5 +23,24 @@ function addBookToLibrary() {
     alert('please enter all information');
   }
 }
-addBookToLibrary();
 
+// loop through and display  book
+function displayLibrary() {
+  let result = '';
+  const tbody = document.querySelector('#tbody');
+  for (let i = 0; i < library.length; i += 1) {
+    result += `
+      <tr>
+      <td> ${library[i].author}</td>
+      <td> ${library[i].title}</td>
+       <td> ${library[i].page}</td>
+       <td><button class='button'>Delete</button></td>
+       </tr>`;
+  }
+  tbody.innerHTML = result;
+}
+
+submit.addEventListener('click', () => {
+  displayLibrary();
+  addBookToLibrary();
+});
