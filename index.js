@@ -24,6 +24,24 @@ function addBookToLibrary() {
   }
 }
 
+
+Book.prototype.changeStatus = function () {
+  let selectOption;
+  let answer;
+  const bookStatus = document.querySelector('#bookStatus');
+  bookStatus.addEventListener('change', () => {
+    selectOption = this.options[this.selectedIndex].value;
+    if (selectOption === 0) {
+      answer = 'READ';
+    } else if (selectOption === 1) {
+      answer = 'In Progress';
+    } else if (selectOption === 2) {
+      answer = 'Not Read';
+    }
+    bookStatus.value = answer;
+  });
+};
+
 // loop through and display  book
 function displayLibrary() {
   let result = '';
@@ -41,14 +59,7 @@ function displayLibrary() {
   tbody.innerHTML = result;
 }
 // button to change read status
-Book.prototype.changeStatus = () => {
-  if (this.title === 'Read') {
-    return 'Read';
-  } else if (this.title === 'In Progress') {
-    return 'In Progress';
-  }
-  return 'Not Read';
-};
+
 
 // button to remove book from array
 function applyDataIndex() {
