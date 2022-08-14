@@ -23,24 +23,12 @@ function addBookToLibrary() {
     alert('please enter all information');
   }
 }
-
-
-Book.prototype.changeStatus = function () {
-  let selectOption;
-  let answer;
+const changeStatus = () => {
   const bookStatus = document.querySelector('#bookStatus');
-  bookStatus.addEventListener('change', () => {
-    selectOption = this.options[this.selectedIndex].value;
-    if (selectOption === 0) {
-      answer = 'READ';
-    } else if (selectOption === 1) {
-      answer = 'In Progress';
-    } else if (selectOption === 2) {
-      answer = 'Not Read';
-    }
-    bookStatus.value = answer;
-  });
+  const selectedIndex = bookStatus.querySelector('#read');
+  bookStatus.value = selectedIndex.value;
 };
+submit.addEventListener('click', changeStatus);
 
 // loop through and display  book
 function displayLibrary() {
