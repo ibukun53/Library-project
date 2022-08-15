@@ -14,7 +14,7 @@ function Book(title, author, page, read) {
   this.read = read;
 }
 // new object stored in an array
-function addBookToLibrary() {
+const addBookToLibrary = () => {
   if (bookTitle.value && bookAuthor.value && bookPages.value && readOptions.value) {
     const newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, readOptions.value);
     bookForm.addEventListener('submit', newBook);
@@ -22,7 +22,8 @@ function addBookToLibrary() {
   } else {
     alert('please enter all information');
   }
-}
+};
+
 Book.prototype.changeStatus = () => {
   const bookStatus = document.querySelector('#bookStatus').value;
   const bookStatusResult = bookStatus;
@@ -30,7 +31,7 @@ Book.prototype.changeStatus = () => {
 };
 
 // loop through and display  book
-function displayLibrary() {
+const displayLibrary = () => {
   let result = '';
   const tbody = document.querySelector('#tbody');
   for (let i = 0; i < library.length; i += 1) {
@@ -44,7 +45,7 @@ function displayLibrary() {
        </tr>`;
   }
   tbody.innerHTML = result;
-}
+};
 // button to change read status
 
 
@@ -57,18 +58,19 @@ function applyDataIndex() {
   }
 }
 
-function deleteButton(e) {
+const deleteButton = (e) => {
   const row = e.target.parentNode.parentNode;
   const index = e.target.parentNode.dataset.index;
   row.remove();
   library.splice(index, 1);
-}
-function deleteRow() {
+};
+
+const deleteRow = () => {
   const buttons = document.querySelectorAll('button');
   for (let i = 1; i < buttons.length; i += 1) {
     buttons[i].addEventListener('click', deleteButton);
   }
-}
+};
 
 submit.addEventListener('click', () => {
   displayLibrary();
