@@ -23,12 +23,11 @@ function addBookToLibrary() {
     alert('please enter all information');
   }
 }
-const changeStatus = () => {
-  const bookStatus = document.querySelector('#bookStatus');
-  const selectedIndex = bookStatus.querySelector('#read');
-  bookStatus.value = selectedIndex.value;
+Book.prototype.changeStatus = () => {
+  const bookStatus = document.querySelector('#bookStatus').value;
+  const bookStatusResult = bookStatus;
+  return bookStatusResult;
 };
-submit.addEventListener('click', changeStatus);
 
 // loop through and display  book
 function displayLibrary() {
