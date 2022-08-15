@@ -1,0 +1,41 @@
+.bookInfo {
+    margin : 10px;
+    font-size: 20px;
+}
+
+.input{
+    width: 50%;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+#form{
+    margin-left: 30%;
+}
+
+.selectTitle{
+    font-size: 20px;
+}
+
+#bookStatus{
+    margin-bottom: 20px;
+    height: 30px;
+}
+.option{
+    height: 40px;
+}
+
+table{
+    margin: auto;
+    width: 40%;
+}
+
+table,
+th,
+td {
+  border: 1px solid rgb(163, 140, 131);
+}
+
+td{
+   text-align: center;
+}
