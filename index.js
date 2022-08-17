@@ -1,11 +1,11 @@
-const bookForm = document.querySelector('#form');
 const bookAuthor = document.querySelector('#inputAuthor');
 const bookTitle = document.querySelector('#inputTitle');
 const bookPages = document.querySelector('#inputPages');
-const readOptions = document.querySelector('select');
+const bookStatus = document.querySelector('#bookStatus');
 const submit = document.querySelector('.submit');
 const rows = document.querySelector('tr');
 const error = document.querySelector('#error');
+const tbody = document.querySelector('#tbody');
 const library = [];
 // constructor to create book object
 function Book(title, author, page, read) {
@@ -14,16 +14,34 @@ function Book(title, author, page, read) {
   this.page = page;
   this.read = read;
   Book.prototype.changeStatus = () => {
-    const bookStatus = document.querySelector('#bookStatus').value;
-    const bookStatusResult = bookStatus;
-    return bookStatusResult;
+    for (let i = 0; i < bookStatus.length; i++) {
+      const bookStatusResult = bookStatus[i].value;
+      return bookStatusResult;
+    }
+    return true;
   };
+  // loop through and display  book
+  for (let i = 0; i < library.length; i += 1) {
+    tbody.innerHTML = `
+      <tr>
+      <td> ${library[i].author}</td>
+      <td> ${library[i].title}</td>
+       <td> ${library[i].page}</td>
+       <td> ${library[i].changeStatus()}<br><span></span></td>
+       <td><button class='button'>Delete</button></td>
+       </tr>`;
+    // apply data index
+    return tbody;
+  }
+  for (let i = 0; i < rows.length; i += 1) {
+    rows[i].dataset.index = i;
+  }
 }
+
 // new object stored in an array
 const addBookToLibrary = () => {
-  if (bookTitle.value && bookAuthor.value && bookPages.value && readOptions.value) {
-    const newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, readOptions.value);
-    bookForm.addEventListener('submit', newBook);
+  if (bookTitle.value && bookAuthor.value && bookPages.value && bookStatus.value) {
+    const newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookStatus.value);
     library.push(newBook);
     error.style.display = 'none';
   } else {
@@ -33,26 +51,6 @@ const addBookToLibrary = () => {
   }
 };
 
-// loop through and display  book
-const displayLibrary = () => {
-  let result = '';
-  const tbody = document.querySelector('#tbody');
-  for (let i = 0; i < library.length; i += 1) {
-    result += `
-      <tr>
-      <td> ${library[i].author}</td>
-      <td> ${library[i].title}</td>
-       <td> ${library[i].page}</td>
-       <td> ${library[i].changeStatus()}<br><span></span></td>
-       <td><button class='button'>Delete</button></td>
-       </tr>`;
-    // apply data index
-    for (let i = 0; i < rows.length; i += 1) {
-      rows[i].dataset.index = i;
-    }
-    tbody.innerHTML = result;
-  }
-};
 // button to remove book from array
 const deleteButton = (e) => {
   const row = e.target.parentNode.parentNode;
@@ -68,8 +66,8 @@ const deleteRow = () => {
   }
 };
 
+deleteRow();
+
 submit.addEventListener('click', () => {
-  displayLibrary();
   addBookToLibrary();
-  deleteRow();
 });
