@@ -7,6 +7,7 @@ const rows = document.querySelector('tr');
 const error = document.querySelector('#error');
 const tbody = document.querySelector('#tbody');
 const library = [];
+let result;
 // constructor to create book object
 function Book(title, author, page, read) {
   this.author = author;
@@ -20,22 +21,6 @@ function Book(title, author, page, read) {
     }
     return true;
   };
-  // loop through and display  book
-  for (let i = 0; i < library.length; i += 1) {
-    tbody.innerHTML = `
-      <tr>
-      <td> ${library[i].author}</td>
-      <td> ${library[i].title}</td>
-       <td> ${library[i].page}</td>
-       <td> ${library[i].changeStatus()}<br><span></span></td>
-       <td><button class='button'>Delete</button></td>
-       </tr>`;
-    // apply data index
-    return tbody;
-  }
-  for (let i = 0; i < rows.length; i += 1) {
-    rows[i].dataset.index = i;
-  }
 }
 
 // new object stored in an array
@@ -48,6 +33,22 @@ const addBookToLibrary = () => {
     error.textContent = 'please enter all information';
     error.style.display = 'block';
     error.style.color = 'red';
+  }
+  // loop through and display  book
+  for (let i = 0; i < library.length; i += 1) {
+    result += `
+      <tr>
+      <td> ${library[i].author}</td>
+      <td> ${library[i].title}</td>
+       <td> ${library[i].page}</td>
+       <td> ${library[i].changeStatus()}<br><span></span></td>
+       <td><button class='button'>Delete</button></td>
+       </tr>`;
+    // apply data index
+    tbody.innerHTML = result;
+  }
+  for (let i = 0; i < rows.length; i += 1) {
+    rows[i].dataset.index = i;
   }
 };
 
