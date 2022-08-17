@@ -42,8 +42,12 @@ td{
 
 .err{
     background: white;
+      
 }
 .mesge{
     color: red;
-    font-weight: bold
+    font-weight: bold;
+}
+#error{
+    margin-bottom: 20px;
 }
