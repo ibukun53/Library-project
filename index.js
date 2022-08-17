@@ -4,7 +4,8 @@ const bookTitle = document.querySelector('#inputTitle');
 const bookPages = document.querySelector('#inputPages');
 const readOptions = document.querySelector('select');
 const submit = document.querySelector('.submit');
-
+const rows = document.querySelector('tr');
+const error = document.querySelector('#error');
 const library = [];
 // constructor to create book object
 function Book(title, author, page, read) {
@@ -20,7 +21,8 @@ const addBookToLibrary = () => {
     bookForm.addEventListener('submit', newBook);
     library.push(newBook);
   } else {
-    alert('please enter all information');
+    error.textContent = 'please enter all information';
+    error.style.color = 'red';
   }
 };
 
@@ -43,20 +45,39 @@ const displayLibrary = () => {
        <td> ${library[i].changeStatus()}<br><span></span></td>
        <td><button class='button'>Delete</button></td>
        </tr>`;
+    // apply data index
+    for (let i = 0; i < rows.length; i += 1) {
+      rows[i].dataset.index = i;
+    }
+    tbody.innerHTML = result;
   }
-  tbody.innerHTML = result;
+  let valid = true;
+  let error = ' ';
+  let field = '';
+  field = document.querySelector('#inputTitle #inputAuthor');
+  error = document.querySelector('#cname');
+  if (!field.checkValidity()) {
+    valid = false;
+    field.classList.add('err');
+    error.innerHTML = 'Name must be 2-20 character\r\n';
+  } else {
+    field.classList.remove('err');
+    error.innerHTML = '';
+  }
+
+  field = document.querySelector('#inputPage');
+  error = document.querySelector('#cnumber');
+  if (!field.checkValidity()) {
+    valid = false;
+    field.classList.add('err');
+    error.innerHTML = 'Num must be 1-1000\r\n';
+  } else {
+    field.classList.remove('err');
+    error.innerHTML = '';
+  }
+  return valid;
 };
-// button to change read status
-
-
 // button to remove book from array
-function applyDataIndex() {
-  const rows = document.querySelector('tr');
-  for (let i = 0; i < rows.length; i += 1) {
-    rows[i].dataset.index = i;
-    console.log(rows[i].dataset);
-  }
-}
 
 const deleteButton = (e) => {
   const row = e.target.parentNode.parentNode;
@@ -75,6 +96,5 @@ const deleteRow = () => {
 submit.addEventListener('click', () => {
   displayLibrary();
   addBookToLibrary();
-  applyDataIndex();
   deleteRow();
 });

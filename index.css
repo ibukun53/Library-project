@@ -39,3 +39,11 @@ td {
 td{
    text-align: center;
 }
+
+.err{
+    background: white;
+}
+.mesge{
+    color: red;
+    font-weight: bold
+}
