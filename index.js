@@ -4,6 +4,7 @@ const bookPages = document.querySelector('#inputPages');
 const bookStatus = document.querySelector('#bookStatus');
 const submit = document.querySelector('.submit');
 const error = document.querySelector('#error');
+const rows = document.querySelector('tr');
 
 const library = [];
 // constructor to create book object
@@ -14,7 +15,7 @@ function Book(title, author, page, read) {
   this.read = read;
   Book.prototype.changeStatus = () => {
     for (let i = 0; i < bookStatus.length; i++) {
-      const bookStatusResult = bookStatus[i].value;
+      const bookStatusResult = bookStatus.value;
       return bookStatusResult;
     }
     return true;
@@ -36,6 +37,10 @@ const addBookToLibrary = () => {
     const bookStatusResult = bookStatus;
     return bookStatusResult;
   };
+};
+
+// loop through and add book
+const addBookToDom = () => {
   let result = '';
   const tbody = document.querySelector('#tbody');
   for (let i = 0; i < library.length; i += 1) {
@@ -49,16 +54,17 @@ const addBookToLibrary = () => {
        </tr>`;
   }
   tbody.innerHTML = result;
-  const rows = document.querySelector('tr');
   for (let i = 0; i < rows.length; i += 1) {
     rows[i].dataset.index = i;
   }
 };
 
-// loop through and display  book
-
-// button to change read status
-
+const addAllBookToDom = () => {
+  for (let i = 0; i < addBookToDom(); i += 1) {
+    library.push(addBookToDom()[i]);
+  }
+};
+addAllBookToDom();
 
 // button to remove book from array
 const deleteButton = (e) => {
@@ -67,16 +73,23 @@ const deleteButton = (e) => {
   row.remove();
   library.splice(index, 1);
 };
-
+// button to change read status
 const deleteRow = () => {
-  const buttons = document.querySelectorAll('button');
-  for (let i = 1; i < buttons.length; i += 1) {
-    buttons[i].addEventListener('submit', deleteButton);
-  }
+  const rowTables = document.querySelectorAll('tr');
+  let button = document.querySelector('#button');
+  rowTables.forEach(rowTables => rowTables.addEventListener('submit', (e) => {
+    e.preventDefault();
+    button = e.target.id;
+    if (button) {
+      return deleteButton();
+    }
+    return false;
+  }));
 };
 
 deleteRow();
-
-submit.addEventListener('click', () => {
+submit.addEventListener('click', (e) => {
+  e.preventDefault();
   addBookToLibrary();
+  addAllBookToDom();
 });
