@@ -3,11 +3,9 @@ const bookTitle = document.querySelector('#inputTitle');
 const bookPages = document.querySelector('#inputPages');
 const bookStatus = document.querySelector('#bookStatus');
 const submit = document.querySelector('.submit');
-const rows = document.querySelector('tr');
 const error = document.querySelector('#error');
-const tbody = document.querySelector('#tbody');
+
 const library = [];
-let result;
 // constructor to create book object
 function Book(title, author, page, read) {
   this.author = author;
@@ -22,7 +20,6 @@ function Book(title, author, page, read) {
     return true;
   };
 }
-
 // new object stored in an array
 const addBookToLibrary = () => {
   if (bookTitle.value && bookAuthor.value && bookPages.value && bookStatus.value) {
@@ -34,7 +31,13 @@ const addBookToLibrary = () => {
     error.style.display = 'block';
     error.style.color = 'red';
   }
-  // loop through and display  book
+  Book.prototype.changeStatus = () => {
+    const bookStatus = document.querySelector('#bookStatus').value;
+    const bookStatusResult = bookStatus;
+    return bookStatusResult;
+  };
+  let result = '';
+  const tbody = document.querySelector('#tbody');
   for (let i = 0; i < library.length; i += 1) {
     result += `
       <tr>
@@ -44,13 +47,18 @@ const addBookToLibrary = () => {
        <td> ${library[i].changeStatus()}<br><span></span></td>
        <td><button class='button'>Delete</button></td>
        </tr>`;
-    // apply data index
-    tbody.innerHTML = result;
   }
+  tbody.innerHTML = result;
+  const rows = document.querySelector('tr');
   for (let i = 0; i < rows.length; i += 1) {
     rows[i].dataset.index = i;
   }
 };
+
+// loop through and display  book
+
+// button to change read status
+
 
 // button to remove book from array
 const deleteButton = (e) => {
@@ -63,7 +71,7 @@ const deleteButton = (e) => {
 const deleteRow = () => {
   const buttons = document.querySelectorAll('button');
   for (let i = 1; i < buttons.length; i += 1) {
-    buttons[i].addEventListener('click', deleteButton);
+    buttons[i].addEventListener('submit', deleteButton);
   }
 };
 
