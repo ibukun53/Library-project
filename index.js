@@ -5,6 +5,7 @@ const bookStatus = document.querySelector('#bookStatus');
 const submit = document.querySelector('#submit');
 const library = [];
 const error = document.querySelector('#error');
+
 // constructor to create book object
 function Books(title, author, page, status) {
   this.author = author;
@@ -14,6 +15,7 @@ function Books(title, author, page, status) {
   this.changeStatus = () => {
     this.status = !this.status;
   };
+  this.id = Math.random().toString(36).substr(2, 5);
 }
 
 //  object stored in an array
@@ -26,7 +28,6 @@ const addBookToLibrary = () => {
     error.style.display = 'block';
     error.style.color = 'red';
   }
-
   return newBook;
 };
 
@@ -35,12 +36,13 @@ const addBookToLibrary = () => {
 const addBookToDom = (book) => {
   const tbody = document.querySelector('#tbody');
   tbody.innerHTML += `
-      <tr data-id ="indexRow">
+      <tr data-id="${book.id}" >
       <td> ${book.author}</td> 
       <td> ${book.title}</td> 
        <td> ${book.page}</td>
        <td class ="changeStatus"> ${book.status}<br><span></span></td>
-       <td><button class='button' data-action = "delete">Delete</button></td>
+       <td><button type="button" class='button'
+        data-id="${book.id}" data-action = "delete">Delete</button></td>
        </tr>`;
 };
 
@@ -49,6 +51,8 @@ const addAllBookToDom = () => {
     addBookToDom(library[i]);
   }
 };
+
+
 // button to remove book from array
 const deleteButton = (e) => {
   const row = e.target.parentNode.parentNode;
@@ -72,6 +76,5 @@ submit.addEventListener('click', (e) => {
   e.preventDefault();
   const newBooks = addBookToLibrary();
   addBookToDom(newBooks);
-  addBookToLibrary();
 },
 );
