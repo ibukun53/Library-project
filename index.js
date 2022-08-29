@@ -21,9 +21,7 @@ function Books(title, author, page, status) {
 // object stored in an array
 const addBookToLibrary = () => {
   const newBook = new Books(bookTitle.value, bookAuthor.value, bookPages.value, bookStatus.value);
-  if (library.push(newBook)) {
-    return newBook;
-  }
+  library.push(newBook);
   return newBook;
 };
 
