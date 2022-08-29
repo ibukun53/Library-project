@@ -18,22 +18,27 @@
 #form {
     margin-left: 34%;
 }
-#form:valid{
+
+#form:valid {
     width: 30%;
     border : 5px solid rgb(77, 189, 77); 
 }
-input:invalid{
+
+input:invalid {
     background-color: aqua;
 }
-#form:invalid{
+
+#form:invalid {
     width: 30%;
     border : 5px solid rgb(170, 49, 49);  
 }
-input:required{
+
+input:required {
     background-color: rgb(226, 196, 206);
     border-width: 3px;
 }
-label{
+
+label {
     margin: 1px;
     padding: 1px; 
 }
@@ -43,16 +48,16 @@ label{
     margin-left: 10%;
 }
 
-#bookStatus{
+#bookStatus {
     margin-bottom: 20px;
     height: 30px;
     margin-left: 10%;
 }
-.option{
+.option {
     height: 40px;
 }
 
-table{
+table {
     margin: auto;
     width: 40%;
 }
@@ -63,6 +68,6 @@ td {
   border: 1px solid rgb(163, 140, 131);
 }
 
-td{
+td {
    text-align: center;
 }
