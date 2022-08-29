@@ -2,9 +2,8 @@ const bookAuthor = document.querySelector('#inputAuthor');
 const bookTitle = document.querySelector('#inputTitle');
 const bookPages = document.querySelector('#inputPages');
 const bookStatus = document.querySelector('#bookStatus');
-const submit = document.querySelector('#submit');
+const submit = document.querySelector('#form');
 let library = [];
-const error = document.querySelector('#error');
 const tbody = document.querySelector('tbody');
 // constructor to create book object
 function Books(title, author, page, status) {
@@ -19,15 +18,11 @@ function Books(title, author, page, status) {
   this.id = Math.random().toString(36).substr(2, 5);
 }
 
-//  object stored in an array
+// object stored in an array
 const addBookToLibrary = () => {
   const newBook = new Books(bookTitle.value, bookAuthor.value, bookPages.value, bookStatus.value);
   if (library.push(newBook)) {
-    error.style.display = 'none';
-  } else {
-    error.textContent = 'please enter all information';
-    error.style.display = 'block';
-    error.style.color = 'red';
+    return newBook;
   }
   return newBook;
 };
@@ -43,7 +38,8 @@ const addBookToDom = (book) => {
        <td class = "changeStatus"> ${book.status}<br><span></span></td>
        <td><button type="button" class='button' 
        data-id="${book.id}" data-action = "delete">Delete</button></td>
-       </tr>`; // using data id to target delete button
+       </tr>`;
+  // using data-id to target an id
 };
 
 // add multiple book to library
@@ -66,7 +62,7 @@ const deleteBook = (event) => {
 };
 tbody.addEventListener('click', deleteBook);
 addAllBookToDom();
-submit.addEventListener('click', (e) => {
+submit.addEventListener('submit ', (e) => {
   e.preventDefault();
   const newBooks = addBookToLibrary();
   addBookToDom(newBooks);
