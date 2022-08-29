@@ -1,6 +1,6 @@
 .bookInfo {
     margin : 10%;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .submit {
@@ -19,7 +19,7 @@
 }
 
 #form {
-    margin-left: 2it 0%;
+    margin-left: 20%;
 }
 
 #form:valid {
@@ -68,7 +68,8 @@ table {
 table,
 th,
 td {
-  border: 1px solid rgb(163, 140, 131);
+  border: 4px solid rgb(199, 139, 181);
+  padding: 3px
 }
 
 td {
