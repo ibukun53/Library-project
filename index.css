@@ -3,23 +3,50 @@
     font-size: 20px;
 }
 
+.submit {
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+
 .input {
-    width: 50%;
+    width:50%;
     height: 30px;
     margin-bottom: 20px;
+    margin-left: 10%;
 }
 
 #form {
-    margin-left: 30%;
+    margin-left: 34%;
+}
+#form:valid{
+    width: 30%;
+    border : 5px solid rgb(77, 189, 77); 
+}
+input:invalid{
+    background-color: aqua;
+}
+#form:invalid{
+    width: 30%;
+    border : 5px solid rgb(170, 49, 49);  
+}
+input:required{
+    background-color: rgb(226, 196, 206);
+    border-width: 3px;
+}
+label{
+    margin: 1px;
+    padding: 1px; 
 }
 
 .selectTitle {
     font-size: 20px;
+    margin-left: 10%;
 }
 
 #bookStatus{
     margin-bottom: 20px;
     height: 30px;
+    margin-left: 10%;
 }
 .option{
     height: 40px;
@@ -38,16 +65,4 @@ td {
 
 td{
    text-align: center;
-}
-
-.err{
-    background: white;
-      
-}
-.mesge{
-    color: red;
-    font-weight: bold;
-}
-#error{
-    margin-bottom: 20px;
 }
