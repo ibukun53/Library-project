@@ -1,11 +1,14 @@
 .bookInfo {
-    margin : 10px;
+    margin : 10%;
     font-size: 20px;
 }
 
 .submit {
     margin-left: 10%;
     margin-bottom: 5%;
+    background-color: rgb(152, 120, 182);
+    height: 30px;
+    border-radius: 20px;
 }
 
 .input {
@@ -21,7 +24,7 @@
 
 #form:valid {
     width: 30%;
-    border : 5px solid rgb(77, 189, 77); 
+    border : 5px solid rgb(171, 206, 171); 
 }
 
 input:invalid {
@@ -30,7 +33,7 @@ input:invalid {
 
 #form:invalid {
     width: 30%;
-    border : 5px solid rgb(170, 49, 49);  
+    border : 5px solid rgb(231, 151, 151);  
 }
 
 input:required {
