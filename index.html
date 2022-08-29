@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div>
-      <form id="form">
+      <form id ="form">
         <label class="bookInfo" for="bookInfo">Enter book info</label><br />
         <input
           type="text"
@@ -17,10 +16,9 @@
           name="Title"
           placeholder="Title"
           required
-          minlength="2"
+          minlength="3"
           maxlength="8"
         /><br />
-        <div id="cname" class="mesge"></div>
         <input
           type="text"
           class="input"
@@ -28,10 +26,9 @@
           name="Author"
           placeholder="Author"
           required
-          minlength="2"
+          minlength="3"
           maxlength="8"
         /><br />
-        <div id="cname" class="mesge"></div>
         <input
           type="number"
           class="input"
@@ -42,17 +39,14 @@
           minlength="1"
           maxlength="100"
         /><br />
-        <div id="cnumber" class="mesge"></div>
         <label class="selectTitle" for="book">--Select--</label><br />
         <select id="bookStatus">
           <option value="Read" class="option">Read</option>
           <option value="In Progress" class="option">In Progress</option>
           <option value="Not Read" class="option">Not Read</option></select
         ><br />
-        <span id="error"></span>
-        <button type="submit" id="submit">Add new book</button>
+        <button type="submit" class="submit">Add new book</button>
       </form>
-    </div>
     <div class="container">
       <table class="table">
         <thead>
