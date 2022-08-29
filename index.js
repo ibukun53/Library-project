@@ -3,9 +3,9 @@ const bookTitle = document.querySelector('#inputTitle');
 const bookPages = document.querySelector('#inputPages');
 const bookStatus = document.querySelector('#bookStatus');
 const submit = document.querySelector('#submit');
-const library = [];
+let library = [];
 const error = document.querySelector('#error');
-
+const tbody = document.querySelector('tbody');
 // constructor to create book object
 function Books(title, author, page, status) {
   this.author = author;
@@ -15,6 +15,7 @@ function Books(title, author, page, status) {
   this.changeStatus = () => {
     this.status = !this.status;
   };
+  // using random string to generate id
   this.id = Math.random().toString(36).substr(2, 5);
 }
 
@@ -31,46 +32,39 @@ const addBookToLibrary = () => {
   return newBook;
 };
 
-
-// a single  book
+// single book object
 const addBookToDom = (book) => {
   const tbody = document.querySelector('#tbody');
   tbody.innerHTML += `
-      <tr data-id="${book.id}" >
+      <tr class="dataId" data-id="${book.id}">
       <td> ${book.author}</td> 
       <td> ${book.title}</td> 
        <td> ${book.page}</td>
-       <td class ="changeStatus"> ${book.status}<br><span></span></td>
-       <td><button type="button" class='button'
-        data-id="${book.id}" data-action = "delete">Delete</button></td>
-       </tr>`;
+       <td class = "changeStatus"> ${book.status}<br><span></span></td>
+       <td><button type="button" class='button' 
+       data-id="${book.id}" data-action = "delete">Delete</button></td>
+       </tr>`; // using data id to target delete button
 };
 
+// add multiple book to library
 const addAllBookToDom = () => {
   for (let i = 0; i < library.length; i += 1) {
     addBookToDom(library[i]);
   }
 };
 
-
-// button to remove book from array
-const deleteButton = (e) => {
-  const row = e.target.parentNode.parentNode;
-  const index = e.target.parentNode.dataset.id;
-  row.remove();
-  library.splice(index, 1);
+const deleteBook = (event) => {
+  // use data attribute to delete book from library
+  if (event.target.dataset.action !== 'delete') {
+    return true;
+  }
+  library = library.filter((ele) => ele.id !== event.target.dataset.id);
+  // removing book from DOM
+  const removeRow = event.target.parentElement.parentElement;
+  removeRow.remove();
+  return false;
 };
-// button to change read status
-const deleteRow = () => {
-  const tbody = document.querySelector('tbody');
-  tbody.addEventListener('click', (event) => {
-    if (event.target.dataset.action === deleteButton()) {
-      return deleteButton();
-    }
-    return false;
-  });
-};
-deleteRow();
+tbody.addEventListener('click', deleteBook);
 addAllBookToDom();
 submit.addEventListener('click', (e) => {
   e.preventDefault();
