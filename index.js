@@ -62,7 +62,7 @@ const deleteBook = (event) => {
 };
 tbody.addEventListener('click', deleteBook);
 addAllBookToDom();
-submit.addEventListener('submit ', (e) => {
+submit.addEventListener('submit', (e) => {
   e.preventDefault();
   const newBooks = addBookToLibrary();
   addBookToDom(newBooks);
