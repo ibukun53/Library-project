@@ -1,0 +1,77 @@
+.bookInfo {
+    margin : 10%;
+    font-size: 15px;
+}
+
+.submit {
+    margin-left: 10%;
+    margin-bottom: 5%;
+    background-color: rgb(152, 120, 182);
+    height: 30px;
+    border-radius: 20px;
+}
+
+.input {
+    width:50%;
+    height: 30px;
+    margin-bottom: 20px;
+    margin-left: 10%;
+}
+
+#form {
+    margin-left: 20%;
+}
+
+#form:valid {
+    width: 60%;
+    border : 5px solid rgb(171, 206, 171); 
+}
+
+input:invalid {
+    background-color: aqua;
+}
+
+#form:invalid {
+    width: 60%;
+    border : 5px solid rgb(231, 151, 151);  
+}
+
+input:required {
+    background-color: rgb(226, 196, 206);
+    border-width: 3px;
+}
+
+label {
+    margin: 1px;
+    padding: 1px; 
+}
+
+.selectTitle {
+    font-size: 20px;
+    margin-left: 10%;
+}
+
+#bookStatus {
+    margin-bottom: 20px;
+    height: 30px;
+    margin-left: 10%;
+}
+.option {
+    height: 40px;
+}
+
+table {
+    margin: auto;
+    width: 60%;
+}
+
+table,
+th,
+td {
+  border: 4px solid rgb(199, 139, 181);
+  padding: 3px
+}
+
+td {
+   text-align: center;
+}
