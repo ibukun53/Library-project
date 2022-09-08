@@ -67,5 +67,3 @@ submit.addEventListener('submit', (e) => {
 },
 );
 
-Object.freeze(addAllBookToDom);// preventing data to be changed
-
