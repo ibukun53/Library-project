@@ -34,7 +34,7 @@ const addBookToDom = book => { // using arrow functions
       <td> ${book.title}</td> 
        <td> ${book.page}</td>
        <td class = "changeStatus"> ${book.status}<br><span></span></td>
-       <td><button type="button" class='button' 
+       <td><button type="button " class='button' 
        data-id="${book.id}" data-action = "delete">Delete</button></td>
        </tr>`;
   // using data-id to target an id
@@ -43,7 +43,7 @@ const addBookToDom = book => { // using arrow functions
 // add multiple book to library
 const addAllBookToDom = () => {
   for (let i = 0; i < library.length; i += 1) {
-    addBookToDom(library[i]);
+    addBookToDom(...library);
   }
 };
 
