@@ -66,4 +66,3 @@ submit.addEventListener('submit', (e) => {
   addBookToDom(newBooks);
 },
 );
-
