@@ -26,7 +26,7 @@ const addBookToLibrary = () => {
 };
 
 // single book object
-const addBookToDom = book => {
+const addBookToDom = book => { // using arrow functions
   const tbody = document.querySelector('#tbody');
   tbody.innerHTML += `
       <tr class="dataId" data-id="${book.id}">
