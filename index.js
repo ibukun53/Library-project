@@ -26,7 +26,7 @@ const addBookToLibrary = () => {
 };
 
 // single book object
-const addBookToDom = (book) => {
+const addBookToDom = book => {
   const tbody = document.querySelector('#tbody');
   tbody.innerHTML += `
       <tr class="dataId" data-id="${book.id}">
@@ -47,7 +47,7 @@ const addAllBookToDom = () => {
   }
 };
 
-const deleteBook = (event) => {
+const deleteBook = event => { // using arrow functions
   // use data attribute to delete book from library
   if (event.target.dataset.action !== 'delete') {
     return true;
@@ -66,3 +66,4 @@ submit.addEventListener('submit', (e) => {
   addBookToDom(newBooks);
 },
 );
+Object.freeze(addAllBookToDom);// prevent data mutation
