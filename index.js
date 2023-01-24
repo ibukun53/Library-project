@@ -6,14 +6,16 @@ const submit = document.querySelector('#form');
 let library = [];
 const tbody = document.querySelector('tbody');
 // constructor to create book object
-function Books(title, author, page, status = 'default') { // set defaultt paramter
-  this.author = author;
-  this.title = title;
-  this.page = page;
-  this.status = status;
-  this.changeStatus = () => !this.status; // remove keyword return
-  // using random string to generate id
-  this.id = Math.random().toString(36).substr(2, 5);
+class Books {
+  constructor(title, author, page, status = 'default') { // set defaultt paramter
+    this.author = author;
+    this.title = title;
+    this.page = page;
+    this.status = status;
+    this.changeStatus = () => !this.status; // remove keyword return
+    // using random string to generate id
+    this.id = Math.random().toString(36).substr(2, 5);
+  }
 }
 
 // object stored in an array
