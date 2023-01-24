@@ -6,16 +6,16 @@ const submit = document.querySelector('#form');
 let library = [];
 const tbody = document.querySelector('tbody');
 // constructor to create book object
-function Books(title, author, page, status) {
-  this.author = author;
-  this.title = title;
-  this.page = page;
-  this.status = status;
-  this.changeStatus = () => {
-    this.status = !this.status;
-  };
-  // using random string to generate id
-  this.id = Math.random().toString(36).substr(2, 5);
+class Books {
+  constructor(title, author, page, status = 'default') { // set defaultt paramter
+    this.author = author;
+    this.title = title;
+    this.page = page;
+    this.status = status;
+    this.changeStatus = () => !this.status; // remove keyword return
+    // using random string to generate id
+    this.id = Math.random().toString(36).substr(2, 5);
+  }
 }
 
 // object stored in an array
@@ -26,7 +26,7 @@ const addBookToLibrary = () => {
 };
 
 // single book object
-const addBookToDom = (book) => {
+const addBookToDom = book => { // using arrow functions
   const tbody = document.querySelector('#tbody');
   tbody.innerHTML += `
       <tr class="dataId" data-id="${book.id}">
@@ -34,7 +34,7 @@ const addBookToDom = (book) => {
       <td> ${book.title}</td> 
        <td> ${book.page}</td>
        <td class = "changeStatus"> ${book.status}<br><span></span></td>
-       <td><button type="button" class='button' 
+       <td><button type="button " class='button' 
        data-id="${book.id}" data-action = "delete">Delete</button></td>
        </tr>`;
   // using data-id to target an id
@@ -43,11 +43,11 @@ const addBookToDom = (book) => {
 // add multiple book to library
 const addAllBookToDom = () => {
   for (let i = 0; i < library.length; i += 1) {
-    addBookToDom(library[i]);
+    addBookToDom(...library);// using object spread
   }
 };
 
-const deleteBook = (event) => {
+const deleteBook = event => { // using arrow functions
   // use data attribute to delete book from library
   if (event.target.dataset.action !== 'delete') {
     return true;
@@ -66,3 +66,4 @@ submit.addEventListener('submit', (e) => {
   addBookToDom(newBooks);
 },
 );
+Object.freeze(addAllBookToDom);// prevent data mutation
